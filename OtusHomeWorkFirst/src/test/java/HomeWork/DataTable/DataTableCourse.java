@@ -1,20 +1,39 @@
 package HomeWork.DataTable;
 
-import lombok.Data;
-import org.openqa.selenium.WebElement;
-
 import java.util.Date;
 
-@Data
 public class DataTableCourse {
     private String name;
     private String dateString;
     private Date date;
-    private WebElement element;
 
-    public DataTableCourse(String name, String dateString, WebElement element) {
+
+    public DataTableCourse(String name, String dateString) {
         this.name = name;
         this.dateString = dateString;
-        this.element = element;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDateString() {
+        return dateString;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
     }
 }
