@@ -11,9 +11,14 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MainPage {
-    private WebDriver driver;
+public class MainPage extends Page{
+    public MainPage(WebDriver driver) {
+        super(driver);
+    }
     private final String SITE = "https://otus.ru";
+    public void openSite() {
+        driver.get(SITE);
+    }
 
     @FindBy(xpath = "//div[@class='container container-lessons']/div[@class='lessons']")
     private WebElement popularCourses;
@@ -23,15 +28,6 @@ public class MainPage {
 
     @FindBy(xpath = "//div[@class='lessons']//a[contains(@class,'lessons__new-item')]")
     private List<WebElement> allCourses;
-
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
-
-    public void openSite() {
-        driver.get(SITE);
-    }
 
     public List<String> getNamesAllCourse() {
         List<String> names = new ArrayList<>();
@@ -121,7 +117,7 @@ public class MainPage {
     }
 
     //Преобразование строки в дату
-    public Date StringToDate(int day, String month) {
+    private Date StringToDate(int day, String month) {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
 
@@ -135,7 +131,7 @@ public class MainPage {
         }
     }
 
-    public String getMonth(String month) {
+    private String getMonth(String month) {
         String monthRUS = String.valueOf(month.toCharArray(), 0, 3);
         switch (monthRUS) {
             case "янв":
