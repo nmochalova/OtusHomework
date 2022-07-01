@@ -95,6 +95,7 @@ public class MainPage extends Page{
                     .map(p -> p.getKey())
                     .get();
         }
+        System.out.println("Выбран курс: " + result);
         return result;
     }
 
@@ -161,6 +162,11 @@ public class MainPage extends Page{
             default:
                 return null;
         }
+    }
+
+    public WebElement getCourseByName(String name) {
+        String locator = String.format("//div[@class='lessons']//a[contains(@class,'lessons__new-item')][contains(.,'%s')]",name);
+        return driver.findElement(By.xpath(locator));
     }
 
 }

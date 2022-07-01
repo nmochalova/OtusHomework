@@ -26,8 +26,9 @@ public class FindCourse_test extends BaseTest{
 
         HashMap<String, String> nameAndDate = mainPage.getNamesAndDates();
 
-        System.out.println("========== Самый ранний курс: ==========");
-        System.out.println(mainPage.getMinMaxDateOfCourse(nameAndDate,"min"));
+        String result = mainPage.getMinMaxDateOfCourse(nameAndDate,"min");
+
+        mainPage.getCourseByName(result).click();
     }
 
     @Test
@@ -37,7 +38,8 @@ public class FindCourse_test extends BaseTest{
 
         HashMap<String, String> nameAndDate = mainPage.getNamesAndDates();
 
-        System.out.println("========== Самый поздний курс: ==========");
-        System.out.println(mainPage.getMinMaxDateOfCourse(nameAndDate,"max"));
+        String result = mainPage.getMinMaxDateOfCourse(nameAndDate,"max");
+
+        mainPage.getCourseByName(result).click();
     }
 }
