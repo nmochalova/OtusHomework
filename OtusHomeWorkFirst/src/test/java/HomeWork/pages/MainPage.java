@@ -37,8 +37,8 @@ public class MainPage extends Page{
         return names;
     }
 
-    public HashMap<WebElement, DataTableCourse> getNamesAndDates() {
-        HashMap<WebElement, DataTableCourse> nameAndDate = new HashMap<>();
+    public List<DataTableCourse> getNamesAndDates() {
+        List<DataTableCourse> nameAndDate = new ArrayList<>();
         String nameCourse, dateCourse;
 
         List<WebElement> blockPopular = popularCourses.findElements(By.tagName("a"));
@@ -49,7 +49,7 @@ public class MainPage extends Page{
             dateCourse = element
                     .findElement(By.xpath(".//div[@class='lessons__new-item-start']"))
                     .getText();
-            nameAndDate.put(element, new DataTableCourse(nameCourse, dateCourse));
+            nameAndDate.add(new DataTableCourse(nameCourse, dateCourse, element));
         }
 
         List<WebElement> blockSpecial = specializationsCourses.findElements(By.tagName("a"));
@@ -60,7 +60,7 @@ public class MainPage extends Page{
             dateCourse = element
                     .findElement(By.xpath(".//div[@class='lessons__new-item-time']"))
                     .getText();
-            nameAndDate.put(element, new DataTableCourse(nameCourse, dateCourse));
+            nameAndDate.add(new DataTableCourse(nameCourse, dateCourse, element));
         }
 
         return nameAndDate;
@@ -73,31 +73,30 @@ public class MainPage extends Page{
 
     //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
     //flag принимает значение "max" - для выбора курса, стартующего позже всех и "min" - раньше всех.
-    public WebElement getMinMaxDateOfCourse(HashMap<WebElement, DataTableCourse> nameAndDate, String flag) {
-     //   HashMap<WebElement, DataTableCourse> namesAndDateFormat = new HashMap<>();
+    public WebElement getMinMaxDateOfCourse(List<DataTableCourse> nameAndDate, String flag) {
 
-        for(Map.Entry<WebElement, DataTableCourse> entry : nameAndDate.entrySet()) {
-            Date dt = parserDate(entry.getValue().getDateString());
+        for(DataTableCourse entry : nameAndDate) {
+            Date dt = parserDate(entry.getDateString());
             if (dt != null) {
-                entry.getValue().setDate(dt);
+                entry.setDate(dt);
             }
         }
 
         WebElement result = null;
         if (flag.equals("max")) {
-            result = nameAndDate.entrySet().stream()
-                    .filter(p -> p.getValue().getDate()!=null)
-                    .reduce((s1, s2) -> (s1.getValue().getDate().after(s2.getValue().getDate()) ? s1 : s2))
-                    .map(p -> p.getKey())
+            result = nameAndDate.stream()
+                    .filter(p -> p.getDate()!=null)
+                    .reduce((s1, s2) -> (s1.getDate().after(s2.getDate()) ? s1 : s2))
+                    .map(DataTableCourse::getElement)
                     .get();
         } else if (flag.equals("min")) {
-            result = nameAndDate.entrySet().stream()
-                    .filter(p -> p.getValue().getDate()!=null)
-                    .reduce((s1,s2) -> (s1.getValue().getDate().before(s2.getValue().getDate()) ? s1 : s2))
-                    .map(p -> p.getKey())
+            result = nameAndDate.stream()
+                    .filter(p -> p.getDate()!=null)
+                    .reduce((s1,s2) -> (s1.getDate().before(s2.getDate()) ? s1 : s2))
+                    .map(DataTableCourse::getElement)
                     .get();
         }
-        System.out.println("Выбран курс: " + result);
+        System.out.println("Выбран курс: " + result.getText());
         return result;
     }
 
@@ -165,10 +164,4 @@ public class MainPage extends Page{
                 return null;
         }
     }
-
-    public WebElement getCourseByName(String name) {
-        String locator = String.format("//div[@class='lessons']//a[contains(@class,'lessons__new-item')][contains(.,'%s')]",name);
-        return driver.findElement(By.xpath(locator));
-    }
-
 }

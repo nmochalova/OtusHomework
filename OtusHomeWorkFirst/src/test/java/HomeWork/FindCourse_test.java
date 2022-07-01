@@ -26,7 +26,7 @@ public class FindCourse_test extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         mainPage.openSite();
 
-        HashMap<WebElement, DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
+        List<DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
 
         WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate,"min");
         course.click();
@@ -37,7 +37,7 @@ public class FindCourse_test extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         mainPage.openSite();
 
-        HashMap<WebElement, DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
+        List<DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
 
         WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate,"max");
         course.click();
