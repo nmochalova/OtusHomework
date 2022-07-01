@@ -70,22 +70,14 @@ public class MainPage {
         return nameAndDate;
     }
 
+    //Метод фильтр по названию курса
     public List<String> filterCourseByName(List<String> names, String name) {
         return names.stream().filter(p -> p.contains(name)).collect(Collectors.toList());
     }
 
-//    public Date getMinDateofCourse(HashMap<String, String> nameAndDate) {
-//        HashMap<String, Date> namesAndDateFormat = new HashMap<>();
-//
-//        //Парсим строку в массив дат
-//        HashMap<Integer, String> parseDate = parseDateToString(nameAndDate);
-//        //Преобразование строки в дату
-//        List<Date> datesCourse = StringToDate(parseDate);
-//
-//        return datesCourse.stream().min(Date::compareTo).get();
-//    }
-
-    public List<String> getMaxDateOfCourse(HashMap<String, String> nameAndDate) {
+    //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
+    //flag принимает значение "max" - для выбора курса, стартующего позже всех и "min" - раньше всех.
+    public String getMinMaxDateOfCourse(HashMap<String, String> nameAndDate, String flag) {
         HashMap<String, Date> namesAndDateFormat = new HashMap<>();
 
         for(Map.Entry<String,String> entry : nameAndDate.entrySet()) {
@@ -95,16 +87,18 @@ public class MainPage {
             }
         }
 
-        Date maxDate = namesAndDateFormat.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .get()
-                .getValue();
-
-        List<String> result = namesAndDateFormat.entrySet().stream()
-                .filter(p -> p.getValue().equals(maxDate))
-                .map(p -> p.getKey())
-                .collect(Collectors.toList());
-
+        String result = null;
+        if (flag.equals("max")) {
+            result = namesAndDateFormat.entrySet().stream()
+                    .reduce((s1, s2) -> (s1.getValue().after(s2.getValue()) ? s1 : s2))
+                    .map(p -> p.getKey())
+                    .get();
+        } else if (flag.equals("min")) {
+            result = namesAndDateFormat.entrySet().stream()
+                    .reduce((s1,s2) -> (s1.getValue().before(s2.getValue()) ? s1 : s2))
+                    .map(p -> p.getKey())
+                    .get();
+        }
         return result;
     }
 
