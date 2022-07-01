@@ -1,7 +1,9 @@
 package HomeWork;
 
+import HomeWork.DataTable.DataTableCourse;
 import HomeWork.pages.MainPage;
 import org.junit.Test;
+import org.openqa.selenium.WebElement;
 
 import java.util.*;
 
@@ -24,11 +26,10 @@ public class FindCourse_test extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         mainPage.openSite();
 
-        HashMap<String, String> nameAndDate = mainPage.getNamesAndDates();
+        HashMap<WebElement, DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
 
-        String result = mainPage.getMinMaxDateOfCourse(nameAndDate,"min");
-
-        mainPage.getCourseByName(result).click();
+        WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate,"min");
+        course.click();
     }
 
     @Test
@@ -36,10 +37,9 @@ public class FindCourse_test extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         mainPage.openSite();
 
-        HashMap<String, String> nameAndDate = mainPage.getNamesAndDates();
+        HashMap<WebElement, DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
 
-        String result = mainPage.getMinMaxDateOfCourse(nameAndDate,"max");
-
-        mainPage.getCourseByName(result).click();
+        WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate,"max");
+        course.click();
     }
 }

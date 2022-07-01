@@ -1,10 +1,10 @@
 package HomeWork.pages;
 
+import HomeWork.DataTable.DataTableCourse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,8 +37,8 @@ public class MainPage extends Page{
         return names;
     }
 
-    public HashMap<String, String> getNamesAndDates() {
-        HashMap<String, String> nameAndDate = new HashMap<>();
+    public HashMap<WebElement, DataTableCourse> getNamesAndDates() {
+        HashMap<WebElement, DataTableCourse> nameAndDate = new HashMap<>();
         String nameCourse, dateCourse;
 
         List<WebElement> blockPopular = popularCourses.findElements(By.tagName("a"));
@@ -49,7 +49,7 @@ public class MainPage extends Page{
             dateCourse = element
                     .findElement(By.xpath(".//div[@class='lessons__new-item-start']"))
                     .getText();
-            nameAndDate.put(nameCourse, dateCourse);
+            nameAndDate.put(element, new DataTableCourse(nameCourse, dateCourse));
         }
 
         List<WebElement> blockSpecial = specializationsCourses.findElements(By.tagName("a"));
@@ -60,7 +60,7 @@ public class MainPage extends Page{
             dateCourse = element
                     .findElement(By.xpath(".//div[@class='lessons__new-item-time']"))
                     .getText();
-            nameAndDate.put(nameCourse, dateCourse);
+            nameAndDate.put(element, new DataTableCourse(nameCourse, dateCourse));
         }
 
         return nameAndDate;
@@ -73,25 +73,27 @@ public class MainPage extends Page{
 
     //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
     //flag принимает значение "max" - для выбора курса, стартующего позже всех и "min" - раньше всех.
-    public String getMinMaxDateOfCourse(HashMap<String, String> nameAndDate, String flag) {
-        HashMap<String, Date> namesAndDateFormat = new HashMap<>();
+    public WebElement getMinMaxDateOfCourse(HashMap<WebElement, DataTableCourse> nameAndDate, String flag) {
+     //   HashMap<WebElement, DataTableCourse> namesAndDateFormat = new HashMap<>();
 
-        for(Map.Entry<String,String> entry : nameAndDate.entrySet()) {
-            Date dt = parserDate(entry.getValue());
+        for(Map.Entry<WebElement, DataTableCourse> entry : nameAndDate.entrySet()) {
+            Date dt = parserDate(entry.getValue().getDateString());
             if (dt != null) {
-                namesAndDateFormat.put(entry.getKey(), parserDate(entry.getValue()));
+                entry.getValue().setDate(dt);
             }
         }
 
-        String result = null;
+        WebElement result = null;
         if (flag.equals("max")) {
-            result = namesAndDateFormat.entrySet().stream()
-                    .reduce((s1, s2) -> (s1.getValue().after(s2.getValue()) ? s1 : s2))
+            result = nameAndDate.entrySet().stream()
+                    .filter(p -> p.getValue().getDate()!=null)
+                    .reduce((s1, s2) -> (s1.getValue().getDate().after(s2.getValue().getDate()) ? s1 : s2))
                     .map(p -> p.getKey())
                     .get();
         } else if (flag.equals("min")) {
-            result = namesAndDateFormat.entrySet().stream()
-                    .reduce((s1,s2) -> (s1.getValue().before(s2.getValue()) ? s1 : s2))
+            result = nameAndDate.entrySet().stream()
+                    .filter(p -> p.getValue().getDate()!=null)
+                    .reduce((s1,s2) -> (s1.getValue().getDate().before(s2.getValue().getDate()) ? s1 : s2))
                     .map(p -> p.getKey())
                     .get();
         }
