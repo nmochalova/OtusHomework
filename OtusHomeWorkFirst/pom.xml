@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.1.2</version>
+            <version>3.141.59</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
@@ -51,6 +51,11 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.stqa.selenium</groupId>
+            <artifactId>webdriver-factory</artifactId>
+            <version>4.4</version>
         </dependency>
     </dependencies>
 

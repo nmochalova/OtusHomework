@@ -97,7 +97,7 @@ public class MainPage extends Page{
                     .map(p -> p.getKey())
                     .get();
         }
-        System.out.println("Выбран курс: " + result);
+        System.out.println("Выбран курс: " + result.getText());
         return result;
     }
 

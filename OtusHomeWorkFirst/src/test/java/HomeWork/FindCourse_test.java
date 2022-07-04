@@ -4,6 +4,7 @@ import HomeWork.DataTable.DataTableCourse;
 import HomeWork.pages.MainPage;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.*;
 
@@ -23,13 +24,17 @@ public class FindCourse_test extends BaseTest{
 
     @Test
     public void getEarlyCourse() {
-        MainPage mainPage = new MainPage(driver);
+        eventDriver.register(new MouseListener());
+        MainPage mainPage = new MainPage(eventDriver);
         mainPage.openSite();
 
         HashMap<WebElement, DataTableCourse> nameAndDate = mainPage.getNamesAndDates();
 
         WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate,"min");
         course.click();
+
+     //   Actions actions = new Actions(eventDriver);
+     //   actions.moveToElement(course).click().build().perform();
     }
 
     @Test
