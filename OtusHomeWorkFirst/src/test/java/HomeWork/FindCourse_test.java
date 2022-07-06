@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.*;
-
+//mvn clean test -Dbrowser="chrome" -Dtest=FindCourse_test
 public class FindCourse_test extends BaseTest{
 
     @Test

@@ -1,10 +1,12 @@
 package HomeWork;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import HomeWork.Factory.Browser;
+import HomeWork.Factory.SimpleWebDriverFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import ru.stqa.selenium.factory.WebDriverPool;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +16,9 @@ public class BaseTest {
 
     @Before
     public void StartUp() {
-        driver = WebDriverManager.chromedriver().create();
+        String browser = System.getProperty("browser");
+
+        driver = new SimpleWebDriverFactory().getDriverFactory(getBrowser(browser));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
@@ -23,6 +27,17 @@ public class BaseTest {
 
     @After
     public void cleanUp() {
-        driver.quit();
+        WebDriverPool.DEFAULT.dismissAll();
+    }
+
+    private Browser getBrowser(String browser) {
+        switch (browser.toLowerCase()){
+            case "firefox":
+                return Browser.FIREFOX;
+            case "opera":
+                return Browser.OPERA;
+            default:
+                return Browser.CHROME;
+        }
     }
 }
