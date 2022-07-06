@@ -1,4 +1,4 @@
-package HomeWork.DataTable;
+package HomeWork.dataTable;
 
 import java.util.Date;
 

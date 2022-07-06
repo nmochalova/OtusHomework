@@ -1,10 +1,9 @@
 package HomeWork;
 
-import HomeWork.DataTable.DataTableCourse;
+import HomeWork.dataTable.DataTableCourse;
 import HomeWork.pages.MainPage;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.*;
 //mvn clean test -Dbrowser="chrome" -Dtest=FindCourse_test

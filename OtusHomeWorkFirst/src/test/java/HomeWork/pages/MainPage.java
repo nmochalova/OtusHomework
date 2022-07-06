@@ -1,6 +1,6 @@
 package HomeWork.pages;
 
-import HomeWork.DataTable.DataTableCourse;
+import HomeWork.dataTable.DataTableCourse;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MainPage extends Page{
+public class MainPage extends Page {
     public MainPage(WebDriver driver) {
         super(driver);
     }
