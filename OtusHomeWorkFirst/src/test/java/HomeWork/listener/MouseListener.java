@@ -1,4 +1,4 @@
-package HomeWork;
+package HomeWork.listener;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverEventListener;
@@ -74,12 +74,14 @@ public class MouseListener implements WebDriverEventListener {
 
     }
 
+    //Вызывается перед WebElement.click().
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
       ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='13px solid red;'", element);
         System.out.println("beforeClickOn");
     }
 
+    //Вызывается после WebElement.click().
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
      //  ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='0px solid red;'", element);

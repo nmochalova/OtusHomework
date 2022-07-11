@@ -5,20 +5,21 @@ import HomeWork.driver.impl.FireFoxWebDriver;
 import HomeWork.driver.impl.OperaWebDriver;
 import HomeWork.exeptions.DriverTypeNotSupported;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class DriverFactory implements IDriverFactory {
 
     @Override
-    public WebDriver getDriver(String browser) {
+    public EventFiringWebDriver getDriver(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome": {
-                return new ChromeWebDriver().newDriver();
+                return new EventFiringWebDriver(new ChromeWebDriver().newDriver());
             }
             case "firefox": {
-                return new FireFoxWebDriver().newDriver();
+                return new EventFiringWebDriver(new FireFoxWebDriver().newDriver());
             }
             case "opera": {
-                return new OperaWebDriver().newDriver();
+                return new EventFiringWebDriver(new OperaWebDriver().newDriver());
             }
             default:
                 try {
