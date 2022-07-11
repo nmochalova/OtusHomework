@@ -1,8 +1,6 @@
 
 g
 7src/test/java/HomeWork/Driver/impl/ChromeWebDriver.java,2\9\298b004f742291c77fe21ee6cff2be9354b35018
-e
-5src/test/java/HomeWork/dataTable/DataTableCourse.java,2\6\266f86e6cb0468fdfc6c1336e4da19a643cc1cda
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 _
@@ -15,5 +13,3 @@ f
 6src/test/java/HomeWork/driver/impl/OperaWebDriver.java,7\d\7d164722c18527df325542aec77baa6c5838c742
 a
 1src/test/java/HomeWork/driver/IDriverFactory.java,0\a\0aec2f8cb3bd3dac9c01e5dfb98aeb03cd3fcf87
-V
-&src/test/java/HomeWork/pages/Page.java,7\d\7d546ddebf0d28bc57aee12ef473abb60f458d34

@@ -5,12 +5,14 @@ import HomeWork.listener.MouseListener;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
- //   protected WebDriver driver;
+
     protected EventFiringWebDriver driver;
 
     @Before
@@ -25,6 +27,7 @@ public class BaseTest {
 
     @After
     public void cleanUp() {
+            driver.close();
             driver.quit();
             driver = null;
     }

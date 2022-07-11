@@ -37,6 +37,10 @@ public class MainPage extends Page {
         return names;
     }
 
+    public String getNameOfCourse(WebElement course) {
+        return course.findElement(By.className("lessons__new-item-title")).getAttribute("innerText");
+    }
+
     public HashMap<WebElement, DataTableCourse> getNamesAndDates() {
         HashMap<WebElement, DataTableCourse> nameAndDate = new HashMap<>();
         String nameCourse, dateCourse;
@@ -74,7 +78,6 @@ public class MainPage extends Page {
     //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
     //flag принимает значение "max" - для выбора курса, стартующего позже всех и "min" - раньше всех.
     public WebElement getMinMaxDateOfCourse(HashMap<WebElement, DataTableCourse> nameAndDate, String flag) {
-     //   HashMap<WebElement, DataTableCourse> namesAndDateFormat = new HashMap<>();
 
         for(Map.Entry<WebElement, DataTableCourse> entry : nameAndDate.entrySet()) {
             Date dt = parserDate(entry.getValue().getDateString());
