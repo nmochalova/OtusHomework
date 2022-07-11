@@ -38,13 +38,6 @@ public class FindCourse_test extends BaseTest {
         Actions actions = new Actions(driver);
         actions.moveToElement(course).build().perform();
 
-//        WebElement myElement = driver.findElement(By.xpath("//div[@class='container container-lessons']/div[@class='lessons']/a"));
-//        ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='13px solid red;'", myElement);
-//        try {
-//            Thread.sleep(9000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
         course.click();
     }
 

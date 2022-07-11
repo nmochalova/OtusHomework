@@ -105,7 +105,7 @@ public class MainPage extends Page {
     private Date parserDate(String StringDateFromSite) {
         int day;
         String month;
-        if (!StringDateFromSite.equals("О дате старта будет объявлено позже")) {
+        if (!StringDateFromSite.equals("О дате старта будет объявлено позже") && !StringDateFromSite.contains("В")) {
             String[] paramAndValue = StringDateFromSite.split(" ");
             try {
                 day = Integer.parseInt(paramAndValue[0]);
