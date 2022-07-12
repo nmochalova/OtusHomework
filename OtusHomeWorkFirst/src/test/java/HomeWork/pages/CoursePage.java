@@ -2,9 +2,12 @@ package HomeWork.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CoursePage extends Page{
+
     public CoursePage(WebDriver driver) {
         super(driver);
     }
@@ -18,7 +21,8 @@ public class CoursePage extends Page{
          else
              locator = By.tagName("title");
 
-        isElementPresent(locator);
+       //Ожидаем появления заголовка на странице
+        assertTrue(standartWaiter.elementShouldBePresent(locator));
 
        return driver.findElement(locator).getAttribute("innerText");
     }
