@@ -16,7 +16,7 @@ public class CoursePage extends Page{
         if (!titleBeforeClick.contains("Специализация"))
              locator = By.cssSelector(".course-header2__title");
          else
-             locator = By.cssSelector(".tn-atom[field=tn_text_1613574457579]");
+             locator = By.tagName("title");
 
         isElementPresent(locator);
 

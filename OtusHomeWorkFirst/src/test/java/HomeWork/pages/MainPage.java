@@ -108,6 +108,7 @@ public class MainPage extends Page {
     private Date parserDate(String StringDateFromSite) {
         int day;
         String month;
+        ///"(?<day>\d{1,2})\W{1,3}(?<mon>янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)"giu
         if (!StringDateFromSite.equals("О дате старта будет объявлено позже") && !StringDateFromSite.contains("В")) {
             String[] paramAndValue = StringDateFromSite.split(" ");
             try {
