@@ -5,13 +5,15 @@ import pages.CoursePage;
 import pages.MainPage;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.util.*;
 
-//mvn clean test -Dbrowser="chrome" -Dtest=FindCourse_test
-public class FindCourse_test extends BaseTest {
+//mvn clean test -Dbrowser="chrome" -Dfilter="QA" -Dtest=FindCourse_Test
+public class FindCourse_Test extends BaseTest {
 
     @Test
     public void FindCourseByName() {
@@ -38,7 +40,7 @@ public class FindCourse_test extends BaseTest {
 
         //Выбираем самый ранний курс
         WebElement course = mainPage.getMinMaxDateOfCourse(nameAndDate, "min");
-        String titleBeforeClick = mainPage.getNameOfCourse(course);
+        String titleBeforeClick = mainPage.getNameOfCourse(course).toUpperCase();
 
         //наводим курсор на выбранный курс
         Actions actions = new Actions(driver);
@@ -48,10 +50,14 @@ public class FindCourse_test extends BaseTest {
 
         //Переходим на страницу курса
         CoursePage coursePage = new CoursePage(driver);
-        String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick);
+        String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick).toUpperCase();
 
         //Проверяем, что открылась страница в соответствии с выбранным курсом
-        assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
+        if (titleAfterClick.equalsIgnoreCase(titleBeforeClick))
+            assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
+        else
+            assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
+
     }
 
     @Test
@@ -74,7 +80,10 @@ public class FindCourse_test extends BaseTest {
         String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick);
 
         //Проверяем, что открылась страница в соответствии с выбранным курсом
-        assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
+        if (titleAfterClick.equalsIgnoreCase(titleBeforeClick))
+           assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
+        else
+            assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
     }
 
 }
