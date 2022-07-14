@@ -49,8 +49,6 @@ public class FindCourse_test extends BaseTest {
 
         //Проверяем, что открылась страница в соответствии с выбранным курсом
         assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
-
-        //Проверяем, что этот курс на минимальную дату
     }
 
     @Test
@@ -72,6 +70,7 @@ public class FindCourse_test extends BaseTest {
         CoursePage coursePage = new CoursePage(driver);
         String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick);
 
+        //Проверяем, что открылась страница в соответствии с выбранным курсом
         assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
     }
 

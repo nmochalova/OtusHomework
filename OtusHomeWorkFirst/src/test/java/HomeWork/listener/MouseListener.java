@@ -77,14 +77,13 @@ public class MouseListener implements WebDriverEventListener {
     //Вызывается перед WebElement.click().
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
-      ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='13px solid red;'", element);
- //       System.out.println("beforeClickOn");
+      ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red'", element);
     }
 
     //Вызывается после WebElement.click().
     @Override
     public void afterClickOn(WebElement element, WebDriver driver) {
-     //  ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='0px solid red;'", element);
+  //     ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='0px solid red'", element);
  //       System.out.println("afterClickOn");
     }
 
