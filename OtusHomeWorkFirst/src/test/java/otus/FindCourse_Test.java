@@ -53,11 +53,7 @@ public class FindCourse_Test extends BaseTest {
         String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick).toUpperCase();
 
         //Проверяем, что открылась страница в соответствии с выбранным курсом
-        if (titleAfterClick.equalsIgnoreCase(titleBeforeClick))
-            assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
-        else
-            assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
-
+        assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
     }
 
     @Test
@@ -80,10 +76,7 @@ public class FindCourse_Test extends BaseTest {
         String titleAfterClick = coursePage.getTitleByCourse(titleBeforeClick);
 
         //Проверяем, что открылась страница в соответствии с выбранным курсом
-        if (titleAfterClick.equalsIgnoreCase(titleBeforeClick))
-           assertEquals(titleBeforeClick,titleAfterClick,"TEST_ERROR: The open page does not match the selected course.");
-        else
-            assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
+        assertTrue(titleAfterClick.toUpperCase().contains(titleBeforeClick.toUpperCase()), "TEST_ERROR: The open page does not match the selected course.");
     }
 
 }
