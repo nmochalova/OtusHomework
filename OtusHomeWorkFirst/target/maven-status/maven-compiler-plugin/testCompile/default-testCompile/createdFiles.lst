@@ -1,14 +1,2 @@
-HomeWork\driver\impl\IDriver$1.class
-HomeWork\MouseListener.class
-HomeWork\BaseTest.class
-HomeWork\driver\impl\IDriver.class
-HomeWork\FindCourse_test.class
-HomeWork\driver\impl\OperaWebDriver.class
-HomeWork\driver\impl\ChromeWebDriver.class
-HomeWork\driver\IDriverFactory.class
-HomeWork\driver\impl\FireFoxWebDriver.class
-HomeWork\pages\MainPage.class
-HomeWork\driver\DriverFactory.class
-HomeWork\dataTable\DataTableCourse.class
-HomeWork\exeptions\DriverTypeNotSupported.class
-HomeWork\pages\Page.class
+otus\BaseTest.class
+otus\FindCourse_Test.class

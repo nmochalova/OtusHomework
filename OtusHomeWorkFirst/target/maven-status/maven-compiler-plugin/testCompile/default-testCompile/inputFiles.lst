@@ -1,13 +1,2 @@
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\IDriverFactory.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\pages\MainPage.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\impl\OperaWebDriver.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\DriverFactory.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\MouseListener.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\pages\Page.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\dataTable\DataTableCourse.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\exeptions\DriverTypeNotSupported.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\BaseTest.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\impl\FireFoxWebDriver.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\FindCourse_test.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\impl\IDriver.java
-C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\HomeWork\driver\impl\ChromeWebDriver.java
+C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\otus\BaseTest.java
+C:\Work\Git\OtusHomework\OtusHomeWorkFirst\src\test\java\otus\FindCourse_Test.java
