@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class MainPage extends Page {
@@ -80,7 +82,7 @@ public class MainPage extends Page {
     public WebElement getMinMaxDateOfCourse(HashMap<WebElement, DataTableCourse> nameAndDate, String flag) {
 
         for(Map.Entry<WebElement, DataTableCourse> entry : nameAndDate.entrySet()) {
-            Date dt = parserDate(entry.getValue().getDateString());
+            Date dt = parserDateRegex(entry.getValue().getDateString());
             if (dt != null) {
                 entry.getValue().setDate(dt);
             }
@@ -105,19 +107,16 @@ public class MainPage extends Page {
     }
 
     //Парсим строку в массив дат
-    private Date parserDate(String StringDateFromSite) {
+    private Date parserDateRegex(String StringDateFromSite) {
         int day;
         String month;
-        ///"(?<day>\d{1,2})\W{1,3}(?<mon>янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)"giu
-        if (!StringDateFromSite.equals("О дате старта будет объявлено позже") && !StringDateFromSite.contains("В")) {
-            String[] paramAndValue = StringDateFromSite.split(" ");
-            try {
-                day = Integer.parseInt(paramAndValue[0]);
-                month = paramAndValue[1];
-            } catch (NumberFormatException e) {
-                day = Integer.parseInt(paramAndValue[1]);
-                month = paramAndValue[2];
-            }
+        Pattern p = Pattern.compile("(?<day>\\d{1,2})\\W{1,3}(?<month>янв|фев|мар|апр|май|июн|июл|авг|сен|окт|ноя|дек)",
+                Pattern.CASE_INSENSITIVE+Pattern.UNICODE_CASE);
+        Matcher m = p.matcher(StringDateFromSite);
+
+        if(m.find()) {
+            day = Integer.parseInt(m.group("day"));
+            month = m.group("month");
             return StringToDate(day, month);
         } else
             return null;
