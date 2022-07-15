@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="HomeWork.FindCourse_test" time="151.923" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="otus.FindCourse_Test" time="88.887" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.11+9-LTS-194"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.11\bin"/>
-    <property name="browser" value="opera"/>
+    <property name="browser" value="chrome"/>
     <property name="maven.multiModuleProjectDirectory" value="C:\Work\Git\OtusHomework\OtusHomeWorkFirst"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="https://openjdk.java.net/"/>
@@ -15,7 +15,7 @@
     <property name="user.script" value=""/>
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="test" value="FindCourse_test"/>
+    <property name="test" value="FindCourse_Test"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Work\Git\OtusHomework\OtusHomeWorkFirst"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
@@ -43,11 +43,12 @@
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="file.encoding" value="Cp1251"/>
     <property name="java.specification.version" value="11"/>
+    <property name="filter" value="Developer"/>
     <property name="user.name" value="Nataly"/>
     <property name="java.class.path" value="C:\Program Files\maven\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test -Dbrowser=opera -Dtest=FindCourse_test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test -Dtest=FindCourse_Test -Dbrowser=chrome -Dfilter=Developer"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-11.0.11"/>
     <property name="user.language" value="ru"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -67,7 +68,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="HomeWork.FindCourse_test" name="FindCourseByName" time="34.991"/>
-  <testcase classname="HomeWork.FindCourse_test" name="getLatestCourse" time="56.232"/>
-  <testcase classname="HomeWork.FindCourse_test" name="getEarlyCourse" time="60.7"/>
+  <testcase classname="otus.FindCourse_Test" name="FindCourseByName" time="19.5"/>
+  <testcase classname="otus.FindCourse_Test" name="getLatestCourse" time="53.586"/>
+  <testcase classname="otus.FindCourse_Test" name="getEarlyCourse" time="15.801"/>
 </testsuite>

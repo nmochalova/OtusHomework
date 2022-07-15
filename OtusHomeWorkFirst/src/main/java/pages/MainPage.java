@@ -125,7 +125,7 @@ public class MainPage extends Page {
     //Преобразование строки в дату
     private Date StringToDate(int day, String month) {
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
+        int year = calendar.get(Calendar.YEAR);         //Дописать логику для дат на сломе года. Сейчас ко всем датам подставляется текущий год.
 
         String monthNumber = getMonth(month);
         try {

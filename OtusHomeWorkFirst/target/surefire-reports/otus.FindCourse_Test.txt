@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: HomeWork.FindCourse_test
+Test set: otus.FindCourse_Test
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 152.066 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 88.997 sec
